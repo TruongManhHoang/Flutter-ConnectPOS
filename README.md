@@ -6,44 +6,44 @@
 
 <a href="https://www.buymeacoffee.com/zeref278" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
-
 </div>
 
 # Flutter Boilerplate Project
 
 A boilerplate project created in flutter using Bloc, Retrofit. Depend on code generation.
+
 ## Features
 
-* State management and examples
-* Api integration and examples
-* Local database and examples
-* Code generation
-* Local storage
-* Logging
-* Routing
-* Dependency Injection
-* Crashlytics template
-* DarkTheme
-* Multi languages
-* Unit tests
-* Integration test
-* Clean architecture
-* Flutter CI
+- State management and examples
+- Api integration and examples
+- Local database and examples
+- Code generation
+- Local storage
+- Logging
+- Routing
+- Dependency Injection
+- Crashlytics template
+- DarkTheme
+- Multi languages
+- Unit tests
+- Integration test
+- Clean architecture
+- Flutter CI
 
-Some packages: 
-  - [Freezed](https://pub.dev/packages/freezed)
-  - [Flutter Bloc](https://pub.dev/packages/flutter_bloc)
-  - [Flutter gen](https://pub.dev/packages/flutter_gen)
-  - [Retrofit](https://pub.dev/packages/retrofit)
-  - [Dio](https://pub.dev/packages/retrofit)
-  - [Bloc test](https://pub.dev/packages/bloc_test) 
-  - [Mockito](https://pub.dev/packages/mockito)
-  - [Go router](https://pub.dev/packages/go_router)
-  - [Dependency Injection](https://github.com/fluttercommunity/get_it)
-  - [Logger](https://pub.dev/packages/logger)
-  - [Floor](https://pub.dev/packages/floor)
-  - [SharedPreferences](https://pub.dev/packages/shared_preferences)
+Some packages:
 
+- [Freezed](https://pub.dev/packages/freezed)
+- [Flutter Bloc](https://pub.dev/packages/flutter_bloc)
+- [Flutter gen](https://pub.dev/packages/flutter_gen)
+- [Retrofit](https://pub.dev/packages/retrofit)
+- [Dio](https://pub.dev/packages/retrofit)
+- [Bloc test](https://pub.dev/packages/bloc_test)
+- [Mockito](https://pub.dev/packages/mockito)
+- [Go router](https://pub.dev/packages/go_router)
+- [Dependency Injection](https://github.com/fluttercommunity/get_it)
+- [Logger](https://pub.dev/packages/logger)
+- [Floor](https://pub.dev/packages/floor)
+- [SharedPreferences](https://pub.dev/packages/shared_preferences)
 
 ## Getting Started
 
@@ -51,14 +51,16 @@ The Boilerplate contains the minimal implementation required to create a new lib
 
 ### Up-Coming Features:
 
-* Handle multi bloc event in the same time by bloc concurrency example
-* Load more infinite list using bloc example
-* Authentication template
+- Handle multi bloc event in the same time by bloc concurrency example
+- Load more infinite list using bloc example
+- Authentication template
 
 ## Architecture
+
 <img src="https://raw.githubusercontent.com/zeref278/flutter_boilerplate/main/readme_attach/architecture.png" width="700"/>
 
-## How to Use 
+## How to Use
+
 **Step 1:**
 
 Fork, download or clone this repo by using the link below:
@@ -68,7 +70,7 @@ https://github.com/zeref278/flutter_boilerplate.git
 ```
 
 **Step 2:**
-Go to project root and execute the following command in terminal to get the required dependencies and generate languages, freezed, flutter gen: 
+Go to project root and execute the following command in terminal to get the required dependencies and generate languages, freezed, flutter gen:
 
 ```cmd
 flutter pub get
@@ -78,7 +80,7 @@ dart run build_runner build --delete-conflicting-outputs
 ```
 
 **Step 3:**
-Go to `/packages/rest_client` and execute the following command in terminal to generate model and api client: 
+Go to `/packages/rest_client` and execute the following command in terminal to generate model and api client:
 
 ```cmd
 flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
@@ -87,11 +89,13 @@ flutter pub get && flutter pub run build_runner build --delete-conflicting-outpu
 **Whenever change freezed file, assets, api**
 
 Run command
+
 ```cmd
 flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ## Folder structure
+
 ```
 flutter_boilerplate/
 |- assets/                    (assets)
@@ -116,13 +120,17 @@ flutter_boilerplate/
 
 ```
 
-## [Freezed](https://pub.dev/packages/freezed): 
+## [Freezed](https://pub.dev/packages/freezed):
+
 ### Create a immutable Model with any features available
+
 - Define a `constructor` + the `properties`
 - Override `toString`, operator `==`, hashCode
 - Implement a `copyWith` method to clone the object
 - Handling `de/serialization`
+
 ### Example
+
 ```dart
 part 'dog_image.freezed.dart';
 part 'dog_image.g.dart';
@@ -138,7 +146,9 @@ class DogImage with _$DogImage {
       _$DogImageFromJson(json);
 }
 ```
+
 ### Implement
+
 ```dart
 final DogImage dogImage = DogImage.fromJson(json);
 ///
@@ -147,9 +157,12 @@ final DogImage dogImage = dogImage.copyWith(status: 'failed');
 ...
 ```
 
-## [Retrofit]((https://pub.dev/packages/retrofit)):
+## [Retrofit](<(https://pub.dev/packages/retrofit)>):
+
 ### Create a api client by code generation, you do not need to implement each request manually
+
 ### Example
+
 ```dart
 part 'dog_api.g.dart';
 
@@ -161,7 +174,9 @@ abstract class DogApiClient {
   Future<DogImage> getDogImageRandom();
 }
 ```
+
 Generate to
+
 ```dart
   ///
   @override
@@ -187,7 +202,9 @@ Generate to
     return value;
   }
 ```
+
 And this api client will use the `baseUrl` from a Dio injector
+
 ```dart
 injector.registerLazySingleton<Dio>(
   () {
@@ -221,7 +238,9 @@ injector.registerFactory<DogApiClient>(
 ```
 
 ## Mockito and Bloc tests:
+
 If a bloc that you want to test have a required dependencies, you must add it into annotations `@GenerateMocks` in `/test/app_test/app_test.dart`:
+
 ```dart
 @GenerateMocks([
   DogImageRandomRepository,
@@ -231,12 +250,15 @@ If a bloc that you want to test have a required dependencies, you must add it in
 ])
 void main() {}
 ```
+
 Run the following command to generate a mock dependency
+
 ```cmd
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 Write a test file:
+
 ```dart
 setUp(() {
     bloc = DogImageRandomBloc(
@@ -309,9 +331,5 @@ setUp(() {
 ```
 
 ## If you want to understand architecture or any packages used in this project, you can create a discussion on github repo.
+
 ## And feel free to create a pull request !
-
-
-
-
-

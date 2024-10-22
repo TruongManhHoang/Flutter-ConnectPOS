@@ -1,9 +1,9 @@
 include: package:flutter_lints/flutter.yaml
 analyzer:
   exclude:
-    - 'lib/**/*.freezed.dart'
-    - 'lib/**/*.g.dart'
-    - 'lib/generated/'
+    - "lib/**/*.freezed.dart"
+    - "lib/**/*.g.dart"
+    - "lib/generated/"
 linter:
   rules:
     - always_declare_return_types
@@ -71,7 +71,7 @@ linter:
     - hash_and_equals
     - implicit_call_tearoffs
     - implementation_imports
-    - iterable_contains_unrelated_type
+    # - iterable_contains_unrelated_type
     - join_return_with_assignment
     - leading_newlines_in_multiline_strings
     - library_annotations
@@ -79,7 +79,7 @@ linter:
     - library_prefixes
     - library_private_types_in_public_api
     - lines_longer_than_80_chars
-    - list_remove_unrelated_type
+    # - list_remove_unrelated_type
     - literal_only_boolean_expressions
     - missing_whitespace_between_adjacent_strings
     - no_adjacent_strings_in_list
@@ -191,4 +191,3 @@ linter:
     - use_to_and_as_if_applicable
     - valid_regexps
     - void_checks
-

@@ -5,6 +5,7 @@ import 'package:boilerplate/core/bloc_core/ui_status.dart';
 import 'package:boilerplate/generated/l10n.dart';
 import 'package:boilerplate/services/app_service/app_service.dart';
 import 'package:boilerplate/services/log_service/log_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -61,6 +62,23 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   FutureOr<void> _onLocaleChanged(
+    _LocaleChanged event,
+    Emitter<AppState> emit,
+  ) async {
+    if (state.locale != event.locale) {
+      await S.load(Locale(event.locale));
+
+      await _appService.setLocale(locale: event.locale);
+
+      emit(
+        state.copyWith(
+          locale: event.locale,
+        ),
+      );
+    }
+  }
+
+  FutureOr<void> _setKey(
     _LocaleChanged event,
     Emitter<AppState> emit,
   ) async {

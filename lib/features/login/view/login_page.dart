@@ -16,25 +16,11 @@ class LoginPage extends StatelessWidget {
     return BlocProvider<LoginBloc>(
       create: (context) => Injector.instance<LoginBloc>(),
       child: const Scaffold(
-        appBar: _AppBar(),
+        // appBar: _AppBar(),
         body: _Body(),
       ),
     );
   }
-}
-
-class _AppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _AppBar();
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(S.current.login),
-    );
-  }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class _Body extends StatelessWidget {
@@ -76,40 +62,88 @@ class _Body extends StatelessWidget {
     );
   }
 
-  Widget _buildLoginForm(BuildContext context, String username, String password) {
+  Widget _buildLoginForm(
+      BuildContext context, String username, String password) {
     return Center(
       child: Container(
-        width: 300,
-        child: Column(
-          children: [
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: S.current.username
-              ),
-              initialValue: username,
-              onChanged: (value) {
-                context.read<LoginBloc>().add(LoginEvent.changeUsername(value));
-              },
+          width: 300,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/1.jpg',
+                  width: 250,
+                  height: 100,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'ConnectPOS',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                      hintText: S.current.username,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                  initialValue: username,
+                  onChanged: (value) {
+                    context
+                        .read<LoginBloc>()
+                        .add(LoginEvent.changeUsername(value));
+                  },
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                      hintText: S.current.password,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                  obscureText: true,
+                  initialValue: password,
+                  onChanged: (value) {
+                    context
+                        .read<LoginBloc>()
+                        .add(LoginEvent.changePassword(value));
+                  },
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF26A69A),
+                        foregroundColor: Colors.white,
+                        minimumSize: const Size(307, 50),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(9))),
+                    onPressed: () {
+                      context.read<LoginBloc>().add(const LoginEvent.login());
+                    },
+                    child: Text(
+                      S.current.login,
+                      style: TextStyle(fontSize: 16),
+                    )),
+                const SizedBox(
+                  height: 40,
+                ),
+                const Text(
+                  'Forgot Password? Get support',
+                  style: TextStyle(color: Color(0xFF26A69A), fontSize: 15),
+                )
+              ],
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: S.current.password
-              ),
-              obscureText: true,
-              initialValue: password,
-              onChanged: (value) {
-                context.read<LoginBloc>().add(LoginEvent.changePassword(value));
-              },
-            ),
-            ElevatedButton(
-              onPressed: () {
-                context.read<LoginBloc>().add(const LoginEvent.login());
-              },
-              child: Text(S.current.login)
-            )
-          ],
-        ),
-      ),
+          )),
     );
   }
 }

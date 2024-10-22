@@ -5,6 +5,9 @@ class AppKeys {
   static const String darkModeKey = 'darkMode';
   static const String localeKey = 'locale';
   static const String isFirstUseKey = 'isFirstUse';
+  static const String customerId = 'customerId';
+  static const String token = 'token';
+  static const String storeId = 'storeId';
 
   /// Auth service
   static const String accessTokenKey = 'accessToken';

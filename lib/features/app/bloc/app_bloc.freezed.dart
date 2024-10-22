@@ -109,12 +109,18 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedImpl implements _Loaded {
+class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   const _$LoadedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppEvent.loaded()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppEvent.loaded'));
   }
 
   @override
@@ -240,15 +246,25 @@ class __$$LocaleChangedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocaleChangedImpl implements _LocaleChanged {
+class _$LocaleChangedImpl
+    with DiagnosticableTreeMixin
+    implements _LocaleChanged {
   const _$LocaleChangedImpl({required this.locale});
 
   @override
   final String locale;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppEvent.localeChanged(locale: $locale)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppEvent.localeChanged'))
+      ..add(DiagnosticsProperty('locale', locale));
   }
 
   @override
@@ -379,12 +395,20 @@ class __$$DisableFirstUseImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DisableFirstUseImpl implements _DisableFirstUse {
+class _$DisableFirstUseImpl
+    with DiagnosticableTreeMixin
+    implements _DisableFirstUse {
   const _$DisableFirstUseImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppEvent.disableFirstUse()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppEvent.disableFirstUse'));
   }
 
   @override
@@ -496,12 +520,20 @@ class __$$DarkModeChangedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DarkModeChangedImpl implements _DarkModeChanged {
+class _$DarkModeChangedImpl
+    with DiagnosticableTreeMixin
+    implements _DarkModeChanged {
   const _$DarkModeChangedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppEvent.darkModeChanged()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppEvent.darkModeChanged'));
   }
 
   @override
@@ -722,7 +754,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppStateImpl implements _AppState {
+class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
   const _$AppStateImpl(
       {this.status = const UIInitial(),
       this.locale = AppConfig.defaultLocale,
@@ -743,8 +775,19 @@ class _$AppStateImpl implements _AppState {
   final bool isFirstUse;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppState(status: $status, locale: $locale, isDarkMode: $isDarkMode, isFirstUse: $isFirstUse)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppState'))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('locale', locale))
+      ..add(DiagnosticsProperty('isDarkMode', isDarkMode))
+      ..add(DiagnosticsProperty('isFirstUse', isFirstUse));
   }
 
   @override

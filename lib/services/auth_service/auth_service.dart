@@ -3,10 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 
 class AuthService {
-
-  const AuthService({
-    required this.dio
-  });
+  const AuthService({required this.dio});
   final Dio dio;
   // final dio = Injector.instance<Dio>();
 
